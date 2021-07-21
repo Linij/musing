@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    导入babylon的打包文件-->
+    <!--    该文件可在node_modules对应的模块找到-->
+    <script src="../demo/asset/babylon.js"></script>
+    <script src="../demo/asset/babylonjs.loaders.js"></script>
+    <style>
+        html, body, canvas {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden
+        }
+    </style>
+    <!--    导入打包好的js文件-->
+    <script src="../dist/babylon.js"></script>
+</head>
+<body>
+<!--加载容器-->
+<canvas id="renderCanvas"></canvas>
+<script>
+    // 导入模型所需参数
+    let ilauncher = {
+        assetUrl: "../demo/asset/gltf/",
+        assetName: "scene.gltf",
+        container: "renderCanvas"
+    }
+    // 实例化对象
+    let launcher = new BABYLONJS.Launcher(ilauncher);
+    // 模型加载
+    launcher.launch();
+</script>
+</body>
+
+</html>
