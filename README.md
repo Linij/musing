@@ -1,3 +1,3 @@
 # Musing
 
-for help peopel think
+for help human think
