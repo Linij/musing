@@ -11,6 +11,8 @@
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "core-js": "^3.6.5",
     "eslint-plugin-prettier": "^3.4.0",
+    "sass-loader": "^12.1.0",
+    "scss": "^0.2.4",
     "three": "^0.130.1",
     "three-css2drender": "^1.0.0",
     "three-obj-mtl-loader": "^1.0.3",

@@ -5,79 +5,57 @@
 </template>
 
 <script>
-import * as THREE from 'three'
+import * as Three from "three";
+import * as Gltf from "three";
 
 export default {
-    name: 'Index',
+    name: "Index",
     data() {
         return {
-            camera: null,
-            scene: null,
-            renderer: null,
-            mesh: null,
-            d:null,
-        }
+        };
     },
     methods: {
-        inits: function () {
-            // this.scene = new THREE.Scene();
-            // this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-            //
-            // this.renderer = new THREE.WebGLRenderer();
-            // this.renderer.setSize( window.innerWidth, window.innerHeight );
-            //
-            // document.getElementById('container').append(this.renderer.domElement)
-        },
-        init: function () {
-            let container = document.getElementById('container')
-            this.camera = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.01, 10)
-            this.camera.position.z = 0.6
-            this.scene = new THREE.Scene()
-            let geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2)
-            let material = new THREE.MeshNormalMaterial()
-            this.mesh = new THREE.Mesh(geometry, material)
-            this.scene.add(this.mesh)
+        init() {
+            let container = document.getElementById("container");
 
-            this.renderer = new THREE.WebGLRenderer({antialias: true})
-            this.renderer.setSize(container.clientWidth, container.clientHeight)
-            container.appendChild(this.renderer.domElement)
+            const scene = new Three.Scene();
+            const camera = new Three.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+            const renderer = new Three.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            container.appendChild( renderer.domElement );
+
+            const geometry = new Three.BoxGeometry( 1, 1, 1 );
+            const material = new Three.MeshBasicMaterial( { color: 0x00ff00 } );
+            const cube = new Three.Mesh( geometry, material );
+            scene.add( cube );
+
+            camera.position.z = 5;
+
+            const loader = new Gltf.Loader();
+
+            loader.loadAsync('../../../Model/asset/gltf/scene.gltf',function () {
+                scene.add();
+            });
+
+            // const animate = function () {
+            //     requestAnimationFrame( animate );
+            //
+            //     cube.rotation.x += 0.01;
+            //     cube.rotation.y += 0.01;
+            //
+            //     renderer.render( scene, camera );
+            // };
+            //
+            // animate();
         },
-        animate: function () {
-            requestAnimationFrame(this.animate)
-            this.mesh.rotation.x += 0.01
-            this.mesh.rotation.y += 0.02
-            this.renderer.render(this.scene, this.camera)
-        }
     },
     mounted() {
-        this.init()
-        this.animate()
-    }
-
-}
+        this.init();
+    },
+};
 </script>
-<style scoped>
+<style >
 #container {
-    height: 400px;
-}
-</style>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-    margin: 40px 0 0;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
 }
 </style>
