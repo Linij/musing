@@ -5,12 +5,17 @@
 </template>
 
 <script>
+let String;
 export default {
   name: 'Index',
   props: {
     msg: String
   },
-    data:{}
+  data(){
+      let ddd;
+      return {
+          ddd}
+  }
 }
 </script>
 
