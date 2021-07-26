@@ -1,6 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <Index msg="Welcome to Your Vue.js App"/>
+  <Index msg=""/>
 </template>
 
 <script>
@@ -10,8 +9,7 @@ export default {
   name: 'App',
   components: {
       Index
-  },
-    data:{}
+  }
 }
 </script>
 
